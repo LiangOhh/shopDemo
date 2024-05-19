@@ -5,7 +5,18 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import { testMessage } from '@/apis/getMessage'
 
+// getMessage().then(
+//     res => {
+//         console.log(res)
+//     }
+// )
+testMessage().then(
+    res => {
+        console.log(res)
+    }
+)
 const app = createApp(App)
 
 app.use(createPinia())

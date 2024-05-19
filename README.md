@@ -1,35 +1,67 @@
-# shopDemo
+# 自定义主题
 
-This template should help get you started developing with Vue 3 in Vite.
+导入element Plus
 
-## Recommended IDE Setup
+构建工具：vite
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+vite配置文件
 
-## Customize configuration
+安装依赖
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```js
+npm i sass -D
 ```
 
-### Compile and Hot-Reload for Development
+```js
 
-```sh
-npm run dev
+export default defineConfig({
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver({
+        importStyle: 'sass'
+      }),
+      ],
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/element/index.scss" as *;`,
+      },
+    },
+  }
+})
+
 ```
 
-### Compile and Minify for Production
+样式文件index.scss
 
-```sh
-npm run build
+```scss
+/* 只需要重写你需要的即可 */
+@forward 'element-plus/theme-chalk/src/common/var.scss' with ($colors: ('primary': ( // 主色
+            'base': #27ba9b,
+        ),
+        'success': ( // 成功色
+            'base': #1dc779,
+        ),
+        'warning': ( // 警告色
+            'base': #ffb302,
+        ),
+        'danger': ( // 危险色
+            'base': #e26237,
+        ),
+        'error': ( // 错误色
+            'base': #cf4444,
+        ),
+    ))
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
