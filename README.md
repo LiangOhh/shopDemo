@@ -4,6 +4,8 @@
 
 构建工具：vite
 
+字体库: iconfont(font-class引用)
+
 vite配置文件
 
 安装依赖
