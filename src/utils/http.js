@@ -17,7 +17,7 @@ myHttp.interceptors.request.use(
 // axios响应式拦截器
 myHttp.interceptors.response.use(
     res => {
-        alert('成功')
+        // alert('成功')
         return res.data
     }, e => {
         alert('失败')

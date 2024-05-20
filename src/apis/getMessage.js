@@ -1,13 +1,6 @@
 import myHttp from "@/utils/http";
 
-export function testMessage() {
-    /*   myHttp({
-          url: 'home/category/head'
-      }).then(
-          res => {
-              console.log(res)
-          }
-      ) */
+export function getMessage() {
     return myHttp({
         url: 'home/category/head'
     })
