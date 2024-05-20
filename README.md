@@ -72,3 +72,60 @@ export default defineConfig({
 官网:https://vueuse.org/
 
 使用该插件获取滚动距离
+
+# home页面效果代码
+
++ 鼠标hover显示
+
+```scss
+.layer {
+   //...
+   // 控制隐藏,后续鼠标&:hover后block
+    display: none;
+}
+// 关键样式  hover状态下的layer盒子变成block
+&:hover {
+	.layer {
+		display: block;
+    }
+}
+```
+
++ 轮播效果使用el-carousel组件实现
+
+组件指南:https://element-plus.org/zh-CN/component/carousel.html#carousel-%E8%B5%B0%E9%A9%AC%E7%81%AF
+
++ 自定义数据懒加载,使用app.directive()自定义指令
+
++ VueUse监听界面useIntersectionObserver
+
+https://vueuse.org/core/useIntersectionObserver/#useintersectionobserver
+
+```js
+import { useIntersectionObserver } from '@vueuse/core'
+app.directive('img-lazy', {
+    mounted(el, binding) {
+        // el:指令绑定的元素,监听元素
+        // binding:绑定值
+        // console.log(el, binding.value)
+        useIntersectionObserver(
+            el,
+            //isIntersecting布尔值判断是否进入视图
+            ([{ isIntersecting }],) => {
+                console.log(isIntersecting);
+                if (isIntersecting) {
+                    el.src = binding.value
+                }
+            },
+        )
+    },
+})
+```
+
+```vue
+//使用自定义指令
+<img v-img-lazy="item.picture"/>
+```
+
+
+
