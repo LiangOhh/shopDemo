@@ -129,3 +129,17 @@ app.directive('img-lazy', {
 
 
 
+# category效果
+
++ element plus 的[Breadcrumb](https://element-plus.org/zh-CN/component/breadcrumb.html)组件实现
+
++ 使用RouterLink标签的active-class属性设置激活样式
+
++ 路由缓存问题:
+
+  1. 销毁组件,阻止组件服用(给routerview增加key值为路由路径)
+
+  2. 监听路由变化(使用onBeforeRouteUpdate)
+
+  
+

@@ -2,7 +2,7 @@
     <div class="home-banner">
         <el-carousel height="500px">
             <el-carousel-item v-for="item in bannerArray" :key="item.id">
-                <img :src="item.imgUrl" alt="加载图片中">
+                <img v-img-lazy="item.imgUrl" alt="加载图片中">
             </el-carousel-item>
         </el-carousel>
     </div>
