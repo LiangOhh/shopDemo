@@ -38,3 +38,18 @@ export function getCategory(id) {
         }
     })
 }
+export const getSubCategory = (id) => {
+    return myHttp({
+        url: '/category/sub/filter',
+        params: {
+            id
+        }
+    })
+}
+export const getSubCategoryList = (data) => {
+    return myHttp({
+        url: '/category/goods/temporary',
+        method: 'POST',
+        data
+    })
+}

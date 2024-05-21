@@ -21,7 +21,7 @@
             <h3>全部分类</h3>
             <ul>
                 <li v-for="i in categoryObj.children" :key="i.id">
-                    <RouterLink to="/">
+                    <RouterLink :to="`/category/sub/${i.id}`">
                         <img :src="i.picture" />
                         <p>{{ i.name }}</p>
                     </RouterLink>
@@ -45,7 +45,7 @@ import { ArrowRight } from '@element-plus/icons-vue'
 import { getCategory } from '@/apis/getMessage';
 import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router';
-import { getBanner } from '@/apis/getMessage'
+// import { getBanner } from '@/apis/getMessage'
 import GoodsItem from '../Home/components/GoodsItem.vue';
 import { useBanner } from './hooks/useBanner';
 const { bannerArray } = useBanner()
@@ -71,7 +71,6 @@ const getBannerMessage = () => {
 } */
 onMounted(() => {
     getCategoryMessage()
-    // console.log(categoryObj.value)
     // getBannerMessage()
 })
 watch(route, () => getCategoryMessage())

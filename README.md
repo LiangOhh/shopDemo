@@ -143,3 +143,7 @@ app.directive('img-lazy', {
 
   
 
++ 使用[tab-pane](https://element-plus.org/zh-CN/component/tabs.html#tab-pane-%E5%B1%9E%E6%80%A7)标签进行发送请求切换排序
++ 使用[infinite-scroll](https://element-plus.org/zh-CN/component/infinite-scroll.html#infinite-scroll-%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8)标签进行无限滚动
+
++ 使用scrollBehavior切换重置滚动条

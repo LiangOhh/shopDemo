@@ -1,14 +1,19 @@
 import { ref, onMounted } from "vue"
 import { getBanner } from "@/apis/getMessage"
-
 export function useBanner() {
     const bannerArray = ref([])
-    const getBannerMessage = async () => {
-        const res = await getBanner({
+    const getBannerMessage = () => {
+        getBanner({
             distributionSite: '2'
-        })
-        bannerArray.value = res.result
+        }).then(
+            res => {
+                bannerArray.value = res.result
+            }
+        )
+        console.log('调用hooks')
     }
-    onMounted(() => getBannerMessage())
+    onMounted(() => {
+        getBannerMessage()
+    })
     return { bannerArray }
 }
