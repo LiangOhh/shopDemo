@@ -23,11 +23,15 @@ const getHotMessage = () => {
     getHot().then(
         res => {
             hotArray.value = res.result
+            console.log(res.result)
         }
+
     )
+
 }
 onMounted(() => {
     getHotMessage()
+
 })
 </script>
 <style scoped lang='scss'>

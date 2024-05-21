@@ -60,14 +60,11 @@ async function changeSort(sortField) {
 }
 const disabled = ref(false)
 const load = async () => {
-    if (res.result.items.length) {
-        reqData.value.page++
-        const res = await getSubCategoryList(reqData.value)
-        console.log(res)
-        goodList.value = [...goodList.value, ...res.result.items]
-    }
-
-    else if (res.result.items.length === 0) {
+    reqData.value.page++
+    const res = await getSubCategoryList(reqData.value)
+    console.log(res)
+    goodList.value = [...goodList.value, ...res.result.items]
+    if (res.result.items.length === 0) {
         disabled.value = true
     }
 }
