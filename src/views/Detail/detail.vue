@@ -19,7 +19,7 @@
                     <div class="goods-info">
                         <div class="media">
                             <!-- 图片预览区 -->
-
+                            <ImgPreview :imageList="goods.mainPictures"></ImgPreview>
                             <!-- 统计数量 -->
                             <ul class="goods-sales">
                                 <li>
@@ -68,7 +68,7 @@
                                 </dl>
                             </div>
                             <!-- sku组件 -->
-
+                            <MySku :goods="goods"></MySku>
                             <!-- 数据组件 -->
 
                             <!-- 按钮组件 -->
@@ -116,7 +116,8 @@ import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useDetail } from './hooks/useDetail';
 import DetailHot from './components/DetailHot.vue'
-
+import ImgPreview from './components/ImgPreview.vue'
+import MySku from '@/components/MySku/MySku.vue';
 const route = useRoute()
 const { goods } = useDetail(route.params.id)
 console.log(goods)

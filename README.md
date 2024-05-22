@@ -147,3 +147,28 @@ app.directive('img-lazy', {
 + 使用[infinite-scroll](https://element-plus.org/zh-CN/component/infinite-scroll.html#infinite-scroll-%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8)标签进行无限滚动
 
 + 使用scrollBehavior切换重置滚动条
+
+# detail效果
+
++ 放大镜效果
+
+1. VueUse中的[useMouseInElement](https://vueuse.org/core/useMouseInElement/#usemouseinelement)获取鼠标位置
+
+```vue
+<script setup>
+import { useMouseInElement } from '@vueuse/core'
+const target = ref(null)
+//监听ref为target的节点
+const { elementX, elementY, isOutside } = useMouseInElement(target)
+</script>
+<template>
+<div ref="target">      
+    监听标记ref的节点
+</div>
+<template/>
+```
+
+2. 滑块移动边界判定
+
+   ![image-20240522150547451](C:\Users\椋\AppData\Roaming\Typora\typora-user-images\image-20240522150547451.png)
+
