@@ -2,7 +2,7 @@
     <div class="home-product">
         <HomePanel :title="cate.name" v-for="cate in goodArray" :key="cate.id">
             <div class="box">
-                <RouterLink class="cover" to="/">
+                <RouterLink class="cover" :to="`/category/${cate.id}`">
                     <img v-img-lazy="cate.picture" />
                     <strong class="label">
                         <span>{{ cate.name }}馆</span>
@@ -11,7 +11,7 @@
                 </RouterLink>
                 <ul class="goods-list">
                     <li v-for="good in cate.goods" :key="good.id">
-                        <RouterLink to="/" class="goods-item">
+                        <RouterLink :to="`/detail/${good.id}`" class="goods-item">
                             <GoodsItem :good="good"></GoodsItem>
                         </RouterLink>
                     </li>

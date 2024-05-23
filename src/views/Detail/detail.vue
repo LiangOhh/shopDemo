@@ -68,12 +68,12 @@
                                 </dl>
                             </div>
                             <!-- sku组件 -->
-                            <MySku :goods="goods"></MySku>
+                            <MySku :goods="goods" @change="skuChange"></MySku>
                             <!-- 数据组件 -->
-
+                            <el-input-number v-model="num" :min="1" :max="10" @change="changCartNum" />
                             <!-- 按钮组件 -->
                             <div>
-                                <el-button size="large" class="btn">
+                                <el-button size="large" class="btn" @click="cartBtn">
                                     加入购物车
                                 </el-button>
                             </div>
@@ -112,15 +112,48 @@
     </div>
 </template>
 <script setup>
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useDetail } from './hooks/useDetail';
+import { useCartStore } from '@/stores/cart';
 import DetailHot from './components/DetailHot.vue'
 import ImgPreview from './components/ImgPreview.vue'
 import MySku from '@/components/MySku/MySku.vue';
+import { ElMessage } from 'element-plus';
 const route = useRoute()
 const { goods } = useDetail(route.params.id)
-console.log(goods)
+const useCart = useCartStore()
+const num = ref(1)
+let skuObj = {}
+const skuChange = (sku) => {
+    console.log(sku)
+    skuObj = sku
+    console.log(skuObj)
+}
+async function cartBtn() {
+    console.log('购物车调用', useCart.cartList);
+    // 获取商品对象信息
+    const cartGoods = ref({
+        id: goods.value.id,
+        name: goods.value.name,
+        picture: goods.value.mainPictures,
+        count: num.value,
+        price: goods.value.price,
+        skuId: skuObj.skuId,
+        attrsText: skuObj.specsText,
+        selected: true
+    })
+    if (skuObj.skuId) {
+        // 调用store的添加方法
+        await useCart.addCart({ ...cartGoods.value })
+        ElMessage.success('添加成功')
+    } else {
+        ElMessage.warning('请选择规格')
+    }
+}
+function changCartNum() {
+    console.log(num.value)
+}
 onMounted(() => {
 
 })

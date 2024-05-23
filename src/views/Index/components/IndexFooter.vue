@@ -12,6 +12,7 @@
                     <dt>联系</dt>
                     <dd><i class="iconfont icon-gongzhonghao"></i> 公众号</dd>
                     <dd><i class="iconfont icon-dianhua"></i> 电话</dd>
+
                 </dl>
                 <dl>
                     <dt>下载APP</dt>

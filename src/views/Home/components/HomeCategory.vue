@@ -2,14 +2,14 @@
     <div class="home-category">
         <ul class="menu">
             <li v-for="item in categoryStore.categoryArray" :key="item.id">
-                <RouterLink to="/">{{ item.name }}</RouterLink>
+                <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
                 <RouterLink v-for="cate in item.children.slice(0, 2)" :key="cate.id" to="/">{{ cate.name }}</RouterLink>
                 <!-- 弹层layer位置 -->
                 <div class="layer">
                     <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
                     <ul>
                         <li v-for="shop in item.goods" :key="shop.id">
-                            <RouterLink to="/">
+                            <RouterLink :to="`/detail/${shop.id}`">
                                 <img :src="shop.picture" alt="等待图片加载中" />
                                 <div class="info">
                                     <p class="name ellipsis-2">

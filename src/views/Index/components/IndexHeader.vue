@@ -14,12 +14,14 @@
                 <input type="text" placeholder="搜一搜">
             </div>
             <!-- 头部购物车 -->
+            <IndexCart></IndexCart>
         </div>
     </header>
 </template>
 
 <script setup>
 import { useCategoryStore } from '@/stores/category'
+import IndexCart from './IndexCart.vue'
 const categoryStore = useCategoryStore()
 </script>
 

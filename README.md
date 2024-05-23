@@ -189,4 +189,27 @@ import 'element-plus/es/components/message/style/css'
 import { ElMessage } from 'element-plus'
 ```
 
-+ 使用插件将pinia数据持久化
++ 使用插件[pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/)将pinia数据持久化
+
+# cart
+
++ 购物车显示关键代码
+
+```css
+.layer {
+     opacity: 0;
+    //所有的 CSS 属性在变化时都会有一个过渡效果，这个过渡效果持续 0.4 秒，并在开始变化前有 0.2 秒的延迟。
+     transition: all 0.4s 0.2s;
+    //元素在垂直方向上向上移动 200px，并且在垂直方向上缩放到 0，这使得元素在垂直方向上不可见。
+      transform: translateY(-200px) scale(1, 0);
+}
+&:hover {
+	.layer {
+            opacity: 1;
+            transform: none;
+        }
+    }
+```
+
++ 使用reduce和计算属性进行动态渲染
+

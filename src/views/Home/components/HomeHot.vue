@@ -3,7 +3,7 @@
         <template #detail>
             <ul class="goods-list">
                 <li v-for="item in hotArray" :key="item.id">
-                    <RouterLink to="/">
+                    <RouterLink :to="`/category/sub/${item.id}`">
                         <img v-img-lazy="item.picture" alt="" />
                         <p class="name">{{ item.title }}</p>
                         <p class="price">{{ item.alt }}</p>

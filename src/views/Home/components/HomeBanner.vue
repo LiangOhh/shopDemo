@@ -2,7 +2,9 @@
     <div class="home-banner">
         <el-carousel height="500px">
             <el-carousel-item v-for="item in bannerArray" :key="item.id">
-                <img v-img-lazy="item.imgUrl" alt="加载图片中">
+                <router-link :to="item.hrefUrl">
+                    <img v-img-lazy="item.imgUrl" alt="加载图片中">
+                </router-link>
             </el-carousel-item>
         </el-carousel>
     </div>
@@ -15,6 +17,7 @@ const getBannerMessage = () => {
     getBanner().then(
         res => {
             bannerArray.value = res.result
+            console.log(res.result)
         }
     )
 }
