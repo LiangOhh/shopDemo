@@ -1,5 +1,6 @@
 import axios from 'axios'
-
+// import 'element-plus/es/components/message/style/css'
+// import { ElMessage } from 'element-plus'
 // 创建axios实例
 const myHttp = axios.create({
     baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -20,7 +21,8 @@ myHttp.interceptors.response.use(
         // alert('成功')
         return res.data
     }, e => {
-        alert('失败')
+        // alert('失败')
+        // ElMessage.error('网络出现错误!!!')
         return Promise.reject(e)
     })
 

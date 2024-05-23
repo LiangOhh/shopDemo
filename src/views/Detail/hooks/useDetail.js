@@ -34,10 +34,8 @@ export function useDetail(id) {
             console.error('获取商品详情失败:', error);
         }
     }
-
     onMounted(() => {
         getGoods(id)
     })
-
     return { goods }
 }

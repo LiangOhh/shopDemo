@@ -2,10 +2,11 @@
     <nav class="app-topnav">
         <div class="container">
             <ul>
-                <template v-if="true">
+                <template v-if="userStore.userInfo.token">
                     <li><a href="javascript:;"><i class=" iconfont icon-user"></i>椋</a></li>
                     <li>
-                        <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
+                        <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消"
+                            @confirm="loginOut">
                             <template #reference>
                                 <a href="javascript:;">退出登录</a>
                             </template>
@@ -15,7 +16,8 @@
                     <li><a href="javascript:;">会员中心</a></li>
                 </template>
                 <template v-else>
-                    <li><a href="javascript:;">请先登录</a></li>
+                    <li><a href="javascript:;" @click="$router.push('/login')">请先登录</a></li>
+                    <!-- <router-link to="/login">请先登录</router-link> -->
                     <li><a href="javascript:;">帮助中心</a></li>
                     <li><a href="javascript:;">关于我们</a></li>
                 </template>
@@ -25,7 +27,13 @@
 </template>
 
 <script setup>
-
+import { useUserStore } from '@/stores/userInfo';
+import { useRouter } from 'vue-router';
+const userStore = useUserStore()
+const router = useRouter()
+function loginOut() {
+    router.replace('/login')
+}
 </script>
 <style scoped lang="scss">
 .app-topnav {

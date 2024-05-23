@@ -172,3 +172,21 @@ const { elementX, elementY, isOutside } = useMouseInElement(target)
 
    ![image-20240522150547451](C:\Users\椋\AppData\Roaming\Typora\typora-user-images\image-20240522150547451.png)
 
+# login
+
++ 使用elementPlus 的[el-form](https://element-plus.org/zh-CN/component/form.html#%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C)组件进行表单校验
+
+![image-20240522214942242](C:\Users\椋\AppData\Roaming\Typora\typora-user-images\image-20240522214942242.png) 
+
+1. 自定义校验规则
+
++ 使用[ElMessage](https://element-plus.org/zh-CN/component/message.html#message-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA)进行弹窗
+
+  				按需导入需要进行样式引入:
+
+```js
+import 'element-plus/es/components/message/style/css'
+import { ElMessage } from 'element-plus'
+```
+
++ 使用插件将pinia数据持久化
