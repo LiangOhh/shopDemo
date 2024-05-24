@@ -34,12 +34,26 @@ export const useCartStore = defineStore(
                 (allPrice, item) => allPrice + item.count * item.price, 0
             )
         )
+        const isAll = computed(() => cartList.value.every((item) => item.selected))
+        const selectedCount = computed(() => cartList.value.filter(item => item.selected).reduce((selectCount, item) => selectCount + item.count, 0))
+        const selectedPrice = computed(() => cartList.value.filter(item => item.selected).reduce((selectPrice, item) => selectPrice + item.count * item.price, 0))
+        const singleCheck = (skuId, selected) => {
+            const item = cartList.value.find(
+                (item) => item.skuId === skuId
+            )
+            item.selected = selected
+        }
+        const allCheck = (selected) => {
+            // 把cartList中的每一项的selected都设置为当前的全选框状态
+            cartList.value.forEach(item => item.selected = selected)
+        }
 
         return {
             allCounters,
             allPrice,
             cartList,
-            addCart, delCart
+            isAll, selectedCount, selectedPrice,
+            addCart, delCart, singleCheck, allCheck
         }
     },
     {

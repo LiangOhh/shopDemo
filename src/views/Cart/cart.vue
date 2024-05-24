@@ -6,7 +6,7 @@
                     <thead>
                         <tr>
                             <th width="120">
-                                <el-checkbox />
+                                <el-checkbox :model-value="cartStore.isAll" @change="allCheck" />
                             </th>
                             <th width="400">商品信息</th>
                             <th width="220">单价</th>
@@ -19,7 +19,8 @@
                     <tbody>
                         <tr v-for="i in cartList" :key="i.id">
                             <td>
-                                <el-checkbox />
+                                <el-checkbox :model-value="i.selected"
+                                    @change="(selected) => singleCheck(selected, i)" />
                             </td>
                             <td>
                                 <div class="goods">
@@ -67,8 +68,8 @@
             <!-- 操作栏 -->
             <div class="action">
                 <div class="batch">
-                    共 10 件商品，已选择 2 件，商品合计：
-                    <span class="red">¥ 200.00 </span>
+                    共 {{ cartStore.allCounters }}件商品，已选择{{ cartStore.selectedCount }} 件，商品合计：
+                    <span class="red">¥ {{ cartStore.selectedPrice }} </span>
                 </div>
                 <div class="total">
                     <el-button size="large" type="primary">下单结算</el-button>
@@ -79,7 +80,22 @@
 </template>
 <script setup>
 import { useCartStore } from '@/stores/cart';
-const { cartList } = useCartStore()
+// const { cartList } = useCartStore()
+// 单选回调
+const cartStore = useCartStore()
+const { cartList } = cartStore
+const singleCheck = (selected, i) => {
+    // console.log(selected, i.skuId);
+    cartStore.singleCheck(i.skuId, selected)
+}
+// const allCheck = (selected) => {
+//     console.log(selected)
+// }
+const allCheck = (selected) => {
+    // console.log(selected)
+    // 把cartList中的每一项的selected都设置为当前的全选框状态
+    cartStore.allCheck(selected)
+}
 </script>
 <style scoped lang="scss">
 .xtx-cart-page {
