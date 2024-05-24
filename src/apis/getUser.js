@@ -9,3 +9,12 @@ export function getUserInfo(account, password) {
         }
     })
 }
+
+export const getLike = ({ limit = 4 }) => {
+    return myHttp({
+        url: '/goods/relevant',
+        params: {
+            limit
+        }
+    })
+}

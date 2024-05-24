@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useUserStore } from '@/stores/userInfo'
 // import 'element-plus/es/components/message/style/css'
 // import { ElMessage } from 'element-plus'
 // 创建axios实例
@@ -11,6 +12,11 @@ const myHttp = axios.create({
 myHttp.interceptors.request.use(
     config => {
         // console.log(config)
+        const userStore = useUserStore()
+        const token = userStore.userInfo.token
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`
+        }
         return config
     },
     e => Promise.reject(e))
