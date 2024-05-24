@@ -24,7 +24,7 @@
                             </td>
                             <td>
                                 <div class="goods">
-                                    <RouterLink to="/"><img :src="i.picture[0]" alt="" /></RouterLink>
+                                    <RouterLink :to="`/detail/${i.id}`"><img :src="i.picture[0]" alt="" /></RouterLink>
                                     <div>
                                         <p class="name ellipsis">
                                             {{ i.name }}
